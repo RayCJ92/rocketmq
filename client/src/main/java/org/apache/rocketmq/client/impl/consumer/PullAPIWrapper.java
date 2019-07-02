@@ -175,6 +175,7 @@ public class PullAPIWrapper {
             int sysFlagInner = sysFlag;
 
             if (findBrokerResult.isSlave()) {
+                // 发现的是 slave broker，不提交消费进度
                 sysFlagInner = PullSysFlag.clearCommitOffsetFlag(sysFlagInner);
             }
 

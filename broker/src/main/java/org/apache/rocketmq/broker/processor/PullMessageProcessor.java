@@ -492,7 +492,7 @@ public class PullMessageProcessor implements NettyRequestProcessor {
         try {
             List<ByteBuffer> messageBufferList = getMessageResult.getMessageBufferList();
             for (ByteBuffer bb : messageBufferList) {
-
+                // put() 中会调用 bb 的 get，将文件读取到堆内存中
                 byteBuffer.put(bb);
                 storeTimestamp = bb.getLong(MessageDecoder.MESSAGE_STORE_TIMESTAMP_POSTION);
             }
